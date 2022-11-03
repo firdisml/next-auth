@@ -4,7 +4,7 @@ import { getError } from './error'
 import { AxiosError } from 'axios'
 
 export const refreshTokens = async () => {
-    await axios.post(`https://itchy-houses-production.up.railway.app/auth/refresh`, undefined, { withCredentials: true })
+    await axios.post(`api.firdausismail.online/auth/refresh`, undefined, { withCredentials: true })
 }
 
 

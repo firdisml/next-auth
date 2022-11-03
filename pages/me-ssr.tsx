@@ -40,11 +40,11 @@ export default MeSSR;
 
 export const getServerSideProps:GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
     const {req, res} = ctx;
-    const [error, user] = await fetcherSSR(req, res, 'https://itchy-houses-production.up.railway.app/user/profile')
+    const [error, user] = await fetcherSSR(req, res, 'https://api.firdausismail.online/user/profile')
 
     if(!user) return {redirect: {statusCode:307, destination: '/login'}}
     
-    const [err, checkout] = await fetcherSSRPost(req, res, 'https://itchy-houses-production.up.railway.app/payment/checkout', 'price_1LzPxhC3J13TnkehVXwawAAK', 10)
+    const [err, checkout] = await fetcherSSRPost(req, res, 'https://api.firdausismail.online/payment/checkout', 'price_1LzPxhC3J13TnkehVXwawAAK', 10)
 
     return {props:{user, checkout}}
 }

@@ -18,7 +18,7 @@ export default function Login() {
 
         try {
 
-          await axios.post(`https://itchy-houses-production.up.railway.app/auth/signin`, {email:'test@gmail.com', password:'12345'}, {withCredentials:true})
+          await axios.post(`api.firdausismail.online/auth/signin`, {email:'test@gmail.com', password:'12345'}, {withCredentials:true})
           
       } catch (error) {
 
