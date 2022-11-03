@@ -28,7 +28,6 @@ const MeSSR: NextPage<{user:UserDocument, checkout:UserCheckout}> = ({user,check
           Server side authentication
         </h1>
         <p>Hi, {user!.id} 👋</p>
-        <Link href={checkout!.checkout}>Checkout</Link>
       </div>
     </main>
   )
@@ -43,8 +42,6 @@ export const getServerSideProps:GetServerSideProps = async (ctx: GetServerSidePr
     const [error, user] = await fetcherSSR(req, res, 'https://api.firdausismail.online/user/profile')
 
     if(!user) return {redirect: {statusCode:307, destination: '/login'}}
-    
-    const [err, checkout] = await fetcherSSRPost(req, res, 'https://api.firdausismail.online/payment/checkout', 'price_1LzPxhC3J13TnkehVXwawAAK', 10)
 
-    return {props:{user, checkout}}
+    return {props:{user}}
 }
