@@ -8,7 +8,7 @@ import { AxiosError } from 'axios'
 const SET_COOKIE_HEADER = 'set-cookie'
 
 const refreshTokens = async (req: IncomingMessage, res: ServerResponse) => {
-  const response = await axios.post(`http://localhost:3000/auth/refresh`, undefined, {
+  const response = await axios.post(`https://harsh-arithmetic-production.up.railway.app/auth/refresh`, undefined, {
     headers: {cookie: req.headers.cookie},
   })
   const cookies:any = response.headers[SET_COOKIE_HEADER]

@@ -11,7 +11,7 @@ export default function Login() {
         e.preventDefault();
         try {
 
-            await axios.post(`http://localhost:3000/auth/signin`, {email:'test@gmail.com', password:'12345'}, { withCredentials: true })
+            await axios.post(`https://harsh-arithmetic-production.up.railway.app/auth/signin`, {email:'test@gmail.com', password:'12345'}, { withCredentials: true })
             
         } catch (error) {
 
