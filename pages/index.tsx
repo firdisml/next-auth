@@ -22,7 +22,7 @@ interface UserDocument {
 
   const getMe = async () => {
     const [error, user] = await fetcher<UserDocument>(
-      `api.firdausismail.online/user/profile`
+      `https://api.firdausismail.online/user/profile`
     );
     if (!error && user){
       console.log(user)

@@ -4,7 +4,7 @@ import { getError } from './error'
 import { AxiosError } from 'axios'
 
 export const refreshTokens = async () => {
-    await axios.post(`api.firdausismail.online/auth/refresh`, undefined, { withCredentials: true })
+    await axios.post(`https://api.firdausismail.online/auth/refresh`, undefined, { withCredentials: true })
 }
 
 
