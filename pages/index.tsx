@@ -22,7 +22,7 @@ interface UserDocument {
 
   const getMe = async () => {
     const [error, user] = await fetcher<UserDocument>(
-      `https://harsh-arithmetic-production.up.railway.app/user/profile`
+      `https://itchy-houses-production.up.railway.app/user/profile`
     );
     if (!error && user){
       console.log(user)

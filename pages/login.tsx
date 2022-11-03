@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react"
+import React, { FormEvent, useContext, useRef, useState } from "react"
 import axios, { AxiosResponse } from 'axios'
 
 export default function Login() {
@@ -6,18 +6,13 @@ export default function Login() {
     const emailRef = useRef<HTMLInputElement>(null)
     const passwordRef = useRef<HTMLInputElement>(null)
 
-    const config = {
-      headers: {
-        "Content-Type": "application/json"
-        },
-        withCredentials: true
-      }
 
-    async function handleSubmit(e:React.FormEvent){
-        e.preventDefault();
+    async function handleSubmit(e:FormEvent){
+
+      e.preventDefault()
         try {
 
-            await axios.post(`https://harsh-arithmetic-production.up.railway.app/auth/signin`, {email:'test@gmail.com', password:'12345'}, config)
+            await axios.post(`https://itchy-houses-production.up.railway.app/auth/signin`, {email:'test@gmail.com', password:'12345'}, {withCredentials:true})
             
         } catch (error) {
 
