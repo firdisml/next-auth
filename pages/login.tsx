@@ -1,4 +1,4 @@
-import React, { FormEvent, useContext, useRef, useState } from "react"
+import React, { FormEvent, useContext, useEffect, useRef, useState } from "react"
 import axios, { AxiosResponse } from 'axios'
 
 export default function Login() {
@@ -9,18 +9,27 @@ export default function Login() {
 
     async function handleSubmit(e:FormEvent){
 
-      e.preventDefault()
-        try {
 
-            await axios.post(`https://itchy-houses-production.up.railway.app/auth/signin`, {email:'test@gmail.com', password:'12345'}, {withCredentials:true})
-            
-        } catch (error) {
-
-            console.log(error)
-            
-        }
 
     }
+
+    useEffect(()=>{
+      const test = async () => {
+
+        try {
+
+          await axios.post(`https://itchy-houses-production.up.railway.app/auth/signin`, {email:'test@gmail.com', password:'12345'}, {withCredentials:true})
+          
+      } catch (error) {
+
+          console.log(error)
+          
+      }
+
+      }
+
+      test()
+    },[])
 
     return(
         <>
