@@ -46,7 +46,5 @@ export const getServerSideProps:GetServerSideProps = async (ctx: GetServerSidePr
     
     const [err, checkout] = await fetcherSSRPost(req, res, 'http://localhost:3000/payment/checkout', 'price_1LzPxhC3J13TnkehVXwawAAK', 10)
 
-    console.log(checkout);
-
     return {props:{user, checkout}}
 }
