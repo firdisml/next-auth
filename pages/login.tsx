@@ -1,4 +1,4 @@
-import React, { FormEvent, useContext, useEffect, useRef, useState } from "react"
+import React, { FormEvent, useContext, useRef, useState } from "react"
 import axios, { AxiosResponse } from 'axios'
 
 export default function Login() {
@@ -9,27 +9,18 @@ export default function Login() {
 
     async function handleSubmit(e:FormEvent){
 
-
-
-    }
-
-    useEffect(()=>{
-      const test = async () => {
-
+      e.preventDefault()
         try {
 
-          await axios.post(`api.firdausismail.online/auth/signin`, {email:'test@gmail.com', password:'12345'}, {withCredentials:true})
-          
-      } catch (error) {
+            await axios.post(`https://api.firdausismail.online`, {email:'test@gmail.com', password:'12345'}, {withCredentials:true})
+            
+        } catch (error) {
 
-          console.log(error)
-          
-      }
+            console.log(error)
+            
+        }
 
-      }
-
-      test()
-    },[])
+    }
 
     return(
         <>
