@@ -5,7 +5,7 @@ import { UserProvider } from "../context/user.context";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <UserProvider>
+    <UserProvider initialUser={pageProps?.user}>
       <div className="h-screen">
         <Navigation />
         <Component {...pageProps} />
