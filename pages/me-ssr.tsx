@@ -2,6 +2,8 @@ import { useUser } from "../context/user.context";
 import { NextPage } from "next";
 import { GetServerSidePropsContext, GetServerSideProps } from "next";
 import { fetcherSSR } from "../lib/fether-ssr";
+import { fetcherSSRPost } from '../lib/fetchpost'
+import Link from "next/link";
 
 interface UserDocument {
     id: string
@@ -13,7 +15,11 @@ interface UserDocument {
     balance: number
 }
 
-const MeSSR: NextPage<{user:UserDocument}> = ({user}) => {
+interface UserCheckout {
+  checkout:string
+}
+
+const MeSSR: NextPage<{user:UserDocument, checkout:UserCheckout}> = ({user,checkout}) => {
 
   return (
     <main className="flex items-center justify-center h-full">
@@ -22,6 +28,7 @@ const MeSSR: NextPage<{user:UserDocument}> = ({user}) => {
           Server side authentication
         </h1>
         <p>Hi, {user!.id} 👋</p>
+        <Link href={checkout!.checkout}>Checkout</Link>
       </div>
     </main>
   )
@@ -36,5 +43,10 @@ export const getServerSideProps:GetServerSideProps = async (ctx: GetServerSidePr
     const [error, user] = await fetcherSSR(req, res, 'http://localhost:3000/user/profile')
 
     if(!user) return {redirect: {statusCode:307, destination: '/login'}}
-    return {props:{user}}
+    
+    const [err, checkout] = await fetcherSSRPost(req, res, 'http://localhost:3000/payment/checkout', 'price_1LzPxhC3J13TnkehVXwawAAK', 10)
+
+    console.log(checkout);
+
+    return {props:{user, checkout}}
 }
